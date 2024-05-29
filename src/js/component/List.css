@@ -1,0 +1,11 @@
+.list-group-item {
+  position: relative;
+}
+
+.delete-button {
+  display: none;
+}
+
+.list-group-item:hover .delete-button {
+  display: inline;
+}
