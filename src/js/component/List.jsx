@@ -1,22 +1,27 @@
-import React from "react";
-import "./List.css"; // Importar el archivo CSS para estilos adicionales
+import React, { useEffect, useState } from "react";
+import "./List.css";
 
 const List = ({ tasks, setTasks }) => {
+  const [counter, setCounter] = useState(tasks.length);
+
+  useEffect(() => {
+    setCounter(tasks.length);
+  }, [tasks]);
+
   const handleDeleteTask = (indexToDelete) => {
-    const newTasks = tasks.filter((_, index) => index !== indexToDelete);
-    setTasks(newTasks);
+    setTasks(tasks.filter((_, index) => index !== indexToDelete));
   };
 
   return (
-    <div className="mt-4">
+    <div>
       {tasks.length === 0 ? (
         <p className="text-center">No hay tareas, añadir tareas.</p>
       ) : (
-        <ul className="list-group">
+        <ul className="list-group rounded-0">
           {tasks.map((task, index) => (
             <li
               key={index}
-              className="list-group-item d-flex justify-content-between align-items-center position-relative"
+              className="list-group-item d-flex justify-content-between align-items-center"
             >
               {task}
               <button
@@ -28,6 +33,11 @@ const List = ({ tasks, setTasks }) => {
             </li>
           ))}
         </ul>
+      )}
+      {counter > 0 && (
+        <div className="p-2 border border-top-0 fw-light">
+          Tareas pendientes: {counter}
+        </div>
       )}
     </div>
   );

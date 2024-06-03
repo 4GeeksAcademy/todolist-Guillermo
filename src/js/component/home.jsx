@@ -23,22 +23,21 @@ const BoxInput = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
+    <div className="container mt-5 d-flex justify-content-center">
+      <div className="row w-100 d-flex justify-content-center">
+        <div className="col-md-8">
           <h1 className="text-center">ToDo List</h1>
           <input
-            id="todo-input"
             value={inputValue}
             onChange={handleInputChange}
             onKeyDown={handleKeyPress}
-            className="form-control"
+            className="form-control rounded-0"
             type="text"
             placeholder="Introduce Tarea"
           />
+          <List tasks={tasks} setTasks={setTasks} />
         </div>
       </div>
-      <List tasks={tasks} setTasks={setTasks} />
     </div>
   );
 };
